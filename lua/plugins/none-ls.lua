@@ -4,17 +4,17 @@ return {
 		local null_ls = require("null-ls")
 		null_ls.setup({
 			sources = {
-                -- lua
+				-- lua
 				null_ls.builtins.formatting.stylua,
-                -- ruby
+				-- ruby
 				null_ls.builtins.diagnostics.rubocop,
 				null_ls.builtins.formatting.rubocop,
-                -- Javascript
+				-- Javascript
 				null_ls.builtins.diagnostics.esling,
 				null_ls.builtins.formatting.prettier,
 			},
 		})
 
-		vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, {})
+		vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "LSP Format" })
 	end,
 }
