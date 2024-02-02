@@ -9,3 +9,7 @@ vim.cmd("set clipboard=unnamedplus")
 
 -- Add relative line numbers
 vim.cmd("set relativenumber")
+
+-- Splits
+vim.cmd("set splitbelow")
+vim.cmd("set splitright")
