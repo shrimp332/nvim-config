@@ -1,3 +1,3 @@
 return {
-    "nvim-lua/lsp-status.nvim",
+	"nvim-lua/lsp-status.nvim",
 }
