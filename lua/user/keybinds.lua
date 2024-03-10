@@ -18,6 +18,9 @@ map("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease window height" })
 map("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
 map("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
 
+-- Clear search with <esc>
+map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+
 -- move lines
 map("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
 map("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
