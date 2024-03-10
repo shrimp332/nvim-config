@@ -1,20 +1,34 @@
 return {
 	{
 		"williamboman/mason.nvim",
+		lazy = false,
 		config = function()
 			require("mason").setup()
 		end,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
+		lazy = false,
+		opt = {
+			auto_install = true,
+		},
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "rust_analyzer", "tsserver" },
+				ensure_installed = {
+					"lua_ls",
+					"rust_analyzer",
+					"tsserver",
+					"intelephense",
+					"clangd",
+					"pylsp",
+					"csharp_ls",
+				},
 			})
 		end,
 	},
 	{
 		"neovim/nvim-lspconfig",
+		lazy = false,
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 		},
@@ -31,6 +45,18 @@ return {
 			lspconfig.tsserver.setup({
 				capabilities = capabilities,
 			})
+			lspconfig.intelephense.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.clangd.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.pylsp.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.csharp_ls.setup({
+				capabilities = capabilities,
+			})
 
 			vim.keymap.set("n", "<leader>lh", vim.lsp.buf.hover, { desc = "LSP Hover" })
 			vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, { desc = "LSP Define" })
@@ -40,6 +66,7 @@ return {
 	},
 	{
 		"nvimtools/none-ls.nvim",
+		lazy = false,
 		config = function()
 			local null_ls = require("null-ls")
 			local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -51,8 +78,10 @@ return {
 					null_ls.builtins.diagnostics.rubocop,
 					null_ls.builtins.formatting.rubocop,
 					-- Javascript
-					-- null_ls.builtins.diagnostics.esling,
+					-- null_ls.builtins.diagnostics.eslint_d,
 					null_ls.builtins.formatting.prettier,
+					-- Make
+					null_ls.builtins.diagnostics.checkmake,
 				},
 				--	on_attach = function(client, bufnr)
 				--		if client.supports_method("textDocument/formatting") then

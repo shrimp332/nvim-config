@@ -1,6 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	dependencies = { "nvim-tree/nvim-web-devicons", "nvim-lua/lsp-status.nvim" },
 	config = function()
 		require("lualine").setup({
 			options = {
@@ -21,9 +21,10 @@ return {
 					winbar = 1000,
 				},
 			},
+            -- "diagnostics"
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = { "branch", "diff", "diagnostics" },
+				lualine_b = { "branch", "diff", "require'lsp-status'.status()"},
 				lualine_c = { "filename" },
 				lualine_x = { "encoding", "fileformat", "filetype" },
 				lualine_y = { "progress" },

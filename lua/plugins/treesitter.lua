@@ -4,7 +4,7 @@ return {
 	config = function()
 		-- Treesitter setup
 		require("nvim-treesitter.configs").setup({
-			ensure_installed = { "c", "lua", "vim", "javascript", "html", "css", "ruby", "rust" },
+			ensure_installed = { "c", "lua", "vim", "javascript", "html", "css", "ruby", "rust", "sql" },
 			auto_install = true,
 			highlight = { enable = true },
 			indent = { enable = true },
