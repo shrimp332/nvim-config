@@ -13,6 +13,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("user/keybinds")
-require("user/sets")
+require("user/opts")
 
 require("lazy").setup("plugins")
