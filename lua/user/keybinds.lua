@@ -6,7 +6,11 @@ vim.g.mapleader = " "
 -- Splits
 map("n", "<leader>sv", ":vsplit<CR>", { desc = "Create a verticle split" })
 map("n", "<leader>sh", ":split<CR>", { desc = "Create a horizontal split" })
-map("n", "<leader>sq", ":q<CR>", { desc = "Quit buffer" })
+map("n", "<leader>sq", ":bd<CR>", { desc = "Quit buffer" })
+map("n", "<leader>sQ", ":%bd|e#|bd#<CR>", { desc = "Quit buffer" })
+map("n", "<leader>sn", ":bnext<CR>", { desc = "Next buffer" })
+map("n", "<leader>sb", ":bprevious<CR>", { desc = "Previous buffer" })
+
 
 map("n", "<C-j>", "<C-w>j", { desc = "Move focus to lower buffer" })
 map("n", "<C-k>", "<C-w>k", { desc = "Move focus to upper buffer" })
