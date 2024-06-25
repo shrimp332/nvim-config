@@ -11,7 +11,6 @@ map("n", "<leader>sQ", ":%bd|e#|bd#<CR>", { desc = "Quit buffer" })
 map("n", "<leader>sn", ":bnext<CR>", { desc = "Next buffer" })
 map("n", "<leader>sb", ":bprevious<CR>", { desc = "Previous buffer" })
 
-
 map("n", "<C-j>", "<C-w>j", { desc = "Move focus to lower buffer" })
 map("n", "<C-k>", "<C-w>k", { desc = "Move focus to upper buffer" })
 map("n", "<C-l>", "<C-w>l", { desc = "Move focus to right buffer" })
@@ -32,6 +31,9 @@ map("i", "<A-j>", "<ESC>:m .+1<CR>==gi", { desc = "Move line down" })
 map("i", "<A-k>", "<ESC>:m .-2<CR>==gi", { desc = "Move line up" })
 map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move line up" })
 map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move line down" })
+
+-- terminal
+map("t", "<Esc>", "<C-\\><C-n>", { desc = "exit terminal insert mode" })
 
 -- Other
 map("n", "<C-s>", ":w<CR>", { desc = "Save buffer" })
