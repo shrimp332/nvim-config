@@ -11,6 +11,7 @@ local lsps = {
 	"jdtls",
 	"cssls",
 	"html",
+	"nil_ls",
 }
 return {
 	{
