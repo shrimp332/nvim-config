@@ -20,4 +20,6 @@ opt.splitright = true
 -- Set soft line limit
 -- opt.colorcolumn = 80
 
-opt.mousescroll="ver:2,hor:2"
+-- Other
+opt.mousescroll = "ver:2,hor:2"
+opt.smoothscroll = true

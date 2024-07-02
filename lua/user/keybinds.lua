@@ -37,3 +37,4 @@ map("t", "<Esc>", "<C-\\><C-n>", { desc = "exit terminal insert mode" })
 
 -- Other
 map("n", "<C-s>", ":w<CR>", { desc = "Save buffer" })
+map("n", "<leader>z", ":set invwrap<CR>", { desc = "Toggle soft line wrap" })
