@@ -4,8 +4,8 @@ local map = vim.keymap.set
 vim.g.mapleader = " "
 
 -- Splits
-map("n", "<leader>sv", ":vsplit<CR>", { desc = "Create a verticle split" })
-map("n", "<leader>sh", ":split<CR>", { desc = "Create a horizontal split" })
+-- map("n", "<leader>sv", ":vsplit<CR>", { desc = "Create a verticle split" })
+-- map("n", "<leader>sh", ":split<CR>", { desc = "Create a horizontal split" })
 map("n", "<leader>sq", ":bd<CR>", { desc = "Quit buffer" })
 map("n", "<leader>sQ", ":%bd|e#|bd#<CR>", { desc = "Quit buffer" })
 map("n", "<leader>sn", ":bnext<CR>", { desc = "Next buffer" })
