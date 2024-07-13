@@ -12,6 +12,8 @@ local lsps = {
 	"cssls",
 	"html",
 	"nil_ls",
+	"marksman",
+	"gopls",
 }
 return {
 	{
@@ -65,41 +67,75 @@ return {
 				sources = {
 					-- lua
 					null_ls.builtins.formatting.stylua,
-					-- ruby
-					null_ls.builtins.diagnostics.rubocop,
-					null_ls.builtins.formatting.rubocop,
-					-- Javascript
-					-- null_ls.builtins.diagnostics.eslint_d,
-					-- null_ls.builtins.formatting.prettier,
 					-- Make
 					null_ls.builtins.diagnostics.checkmake,
+					-- Go
+					null_ls.builtins.formatting.gofumpt,
+					null_ls.builtins.formatting.goimports_reviser,
+					null_ls.builtins.formatting.golines,
 				},
-				--	on_attach = function(client, bufnr)
-				--		if client.supports_method("textDocument/formatting") then
-				--			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-				--			vim.api.nvim_create_autocmd("BufWritePre", {
-				--				group = augroup,
-				--				buffer = bufnr,
-				--				callback = function()
-				--					-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-				--					-- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
-				--					vim.lsp.buf.format({ async = false })
-				--				end,
-				--			})
-				--		end
-				--	end,
+
+				on_attach = function(client, bufnr)
+					if client.supports_method("textDocument/formatting") then
+						vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+						vim.api.nvim_create_autocmd("BufWritePre", {
+							group = augroup,
+							buffer = bufnr,
+							callback = function()
+								-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+								-- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
+								vim.lsp.buf.format({ async = false })
+							end,
+						})
+					end
+				end,
 			})
 
 			vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "LSP Format" })
 		end,
 	},
+	-- {
+	-- 	"dgagn/diagflow.nvim",
+	-- 	event = "LspAttach",
+	-- 	opts = {},
+	-- },
+	-- vim.diagnostic.config({
+	-- 	virtual_text = false,
 	{
-		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-		config = function()
-			vim.diagnostic.config({
-				virtual_text = false,
-			})
-			require("lsp_lines").setup()
-		end,
-	},
+		"folke/trouble.nvim",
+		opts = {}, -- for default options, refer to the configuration section for custom setup.
+		cmd = "Trouble",
+		keys = {
+			{
+				"<leader>xx",
+				"<cmd>Trouble diagnostics toggle<cr>",
+				desc = "Diagnostics (Trouble)",
+			},
+			{
+				"<leader>xX",
+				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+				desc = "Buffer Diagnostics (Trouble)",
+			},
+			{
+				"<leader>cs",
+				"<cmd>Trouble symbols toggle focus=false<cr>",
+				desc = "Symbols (Trouble)",
+			},
+			{
+				"<leader>cl",
+				"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+				desc = "LSP Definitions / references / ... (Trouble)",
+			},
+			{
+				"<leader>xL",
+				"<cmd>Trouble loclist toggle<cr>",
+				desc = "Location List (Trouble)",
+			},
+			{
+				"<leader>xQ",
+				"<cmd>Trouble qflist toggle<cr>",
+				desc = "Quickfix List (Trouble)",
+			},
+		},
+	}, -- })
 }
