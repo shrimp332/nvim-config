@@ -1,19 +1,24 @@
 local lsps = {
-	-- "lua_ls",
-	-- "rust_analyzer",
-	-- "tsserver",
+	"lua_ls",
+	"bashls",
+	"rust_analyzer",
+	"tsserver",
 	-- "intelephense",
-	-- "clangd",
-	-- "pylsp",
+	"clangd",
+	"pylsp",
 	-- "csharp_ls",
 	-- "emmet_language_server",
 	-- "rubocop",
 	-- "jdtls",
 	-- "cssls",
-	-- "html",
 	-- "nil_ls",
 	-- "marksman",
-	-- "gopls",
+	"gopls",
+	"templ",
+	"htmx",
+	"html",
+	"cssls",
+	"texlab",
 }
 return {
 	{
@@ -51,10 +56,13 @@ return {
 				})
 			end
 
+
+
 			vim.keymap.set("n", "<leader>lh", vim.lsp.buf.hover, { desc = "LSP Hover" })
 			vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, { desc = "LSP Define" })
 			vim.keymap.set("n", "<leader>lD", vim.lsp.buf.declaration, { desc = "LSP Declare" })
 			vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "LSP CA" })
+			vim.keymap.set("n", "<leader>lr", ":LspRestart<CR>", { desc = "LSP Restart" })
 		end,
 	},
 	{
@@ -73,6 +81,8 @@ return {
 					null_ls.builtins.formatting.gofumpt,
 					null_ls.builtins.formatting.goimports_reviser,
 					null_ls.builtins.formatting.golines,
+					-- JS/TS
+					-- null_ls.builtins.formatting.biome
 				},
 
 				on_attach = function(client, bufnr)

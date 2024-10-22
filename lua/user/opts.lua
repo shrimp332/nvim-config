@@ -1,5 +1,6 @@
 local opt = vim.opt
 
+opt.background = "dark"
 -- Sets tab spacing to be 4 spaces
 opt.expandtab = true
 opt.tabstop = 2
