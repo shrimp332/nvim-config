@@ -11,13 +11,14 @@ local lsps = {
 	-- "rubocop",
 	-- "jdtls",
 	-- "cssls",
-	-- "nil_ls",
+	"nil_ls",
 	-- "marksman",
 	"gopls",
 	"templ",
 	"htmx",
 	"html",
 	"cssls",
+	"svelte",
 	"texlab",
 }
 return {
@@ -63,6 +64,7 @@ return {
 			vim.keymap.set("n", "<leader>lD", vim.lsp.buf.declaration, { desc = "LSP Declare" })
 			vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "LSP CA" })
 			vim.keymap.set("n", "<leader>lr", ":LspRestart<CR>", { desc = "LSP Restart" })
+			vim.keymap.set("n", "<leader>lR", ":lua vim.lsp.buf.rename()<CR>", { desc = "LSP Rename symbol" })
 		end,
 	},
 	{
