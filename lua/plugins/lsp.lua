@@ -130,5 +130,22 @@ return {
         desc = "Quickfix List (Trouble)",
       },
     },
+  },
+  {
+    "nvimtools/none-ls.nvim",
+    dependencies = { "mason.nvim" },
+    opts = function(_, opts)
+      local nls = require("null-ls")
+      opts.root_dir = opts.root_dir
+          or require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git")
+      opts.sources = vim.list_extend(opts.sources or {}, {
+        -- Lua
+        nls.builtins.formatting.stylua,
+        -- Go
+        nls.builtins.formatting.gofumpt,
+        nls.builtins.formatting.golines,
+        nls.builtins.formatting.goimports_reviser,
+      })
+    end,
   }
 }
