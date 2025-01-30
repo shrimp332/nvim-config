@@ -1,5 +1,9 @@
 {
+    "Lua.runtie.version": "LuaJIT",
     "diagnostics.globals": [
         "vim"
-    ]
+    ],
+    "Lua.workspace.library": [
+      "/usr/share/nvim/runtime/lua"
+    ],
 }
