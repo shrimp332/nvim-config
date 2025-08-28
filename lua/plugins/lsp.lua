@@ -34,34 +34,30 @@ return {
     },
     {
         {
-            "mason-org/mason.nvim",
-            dependencies = {"neovim/nvim-lspconfig"},
-            lazy = false,
+            "mason-org/mason-lspconfig.nvim",
             opts = {},
+            lazy = false,
+            dependencies = {
+                { "mason-org/mason.nvim", opts = {}, lazy = false },
+                "neovim/nvim-lspconfig",
+            },
             init = function()
                 vim.opt.signcolumn = "yes"
 
-                vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
-                vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
-                vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
-                vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
-                vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
-                vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
-                vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
-                vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-                vim.keymap.set({ "n", "x" }, "<leader>lf", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
-                vim.keymap.set("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+                vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>")
+                vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
+                vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>")
+                vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>")
+                vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>")
+                vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>")
+                vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
+                vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>")
+                vim.keymap.set({ "n", "x" }, "<leader>lf", "<cmd>lua vim.lsp.buf.format({async = true})<cr>")
+                vim.keymap.set("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>")
 
-                vim.lsp.enable("lua_ls")
-
-                vim.lsp.enable("gopls")
-
-                vim.lsp.enable("html")
-                vim.lsp.enable("emmet_language_server")
                 vim.lsp.config("emmet_language_server", {
                     filetypes = { "astro", "css", "eruby", "html", "htmlangular", "htmldjango", "javascriptreact", "less", "pug", "sass", "scss", "svelte", "templ", "typescriptreact", "vue", "php" },
                 })
-                vim.lsp.enable("intelephense")
             end,
         },
     },
