@@ -2,12 +2,13 @@ local opt = vim.opt
 
 -- Sets tab spacing to be 4 spaces
 opt.expandtab = true
-opt.tabstop = 2
-opt.softtabstop = 2
-opt.shiftwidth = 2
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.shiftwidth = 4
 
 -- Enable Clipboard support
-opt.clipboard = "unnamedplus"
+-- opt.clipboard = "unnamedplus"
+opt.clipboard = ""
 
 -- Add relative line numbers
 opt.number = true
@@ -33,3 +34,5 @@ map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move line down" })
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 map("t", "<Esc>", "<C-\\><C-n>", { desc = "exit terminal insert mode" })
+
+vim.diagnostic.config({ virtual_text = false })
