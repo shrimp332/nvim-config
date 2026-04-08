@@ -58,6 +58,26 @@ return {
                 vim.lsp.config("emmet_language_server", {
                     filetypes = { "astro", "css", "eruby", "html", "htmlangular", "htmldjango", "javascriptreact", "less", "pug", "sass", "scss", "svelte", "templ", "typescriptreact", "vue", "php" },
                 })
+                vim.lsp.config("pylsp", {
+                    settings = {
+                        pylsp = {
+                            plugins = {
+                                pycodestyle = {
+                                    maxLineLength = 999
+                                }
+                            }
+                        }
+                    }
+                })
+                vim.lsp.config("lua_ls", {
+                    settings = {
+                        Lua = {
+                            diagnostics = {
+                                globals = { "vim" }
+                            }
+                        }
+                    }
+                })
             end,
         },
     },
